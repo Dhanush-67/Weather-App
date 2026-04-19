@@ -5,6 +5,7 @@ import { MapPin } from "lucide-react";
 import { useGeolocation } from "@/hooks/use-geolocation";
 import { useEffect } from "react";
 import WeatherSkeleton from "@/components/loading-skeleton";
+import { useReverseGeocodeQuery } from "@/hooks/use-weather";
 
 const WeatherDashboard = () => {
   const {
@@ -13,7 +14,9 @@ const WeatherDashboard = () => {
     getLocation,
     isLoading: locationLoading,
   } = useGeolocation();
-  console.log(coordinates);
+
+  const locationQuery = useReverseGeocodeQuery(coordinates);
+  console.log(locationQuery);
 
   const handleRefresh = () => {
     getLocation();
@@ -33,6 +36,21 @@ const WeatherDashboard = () => {
         <AlertTitle>Location Error</AlertTitle>
         <AlertDescription className="flex flex-col gap-4">
           <p>{locationError}</p>
+          <Button onClick={getLocation} variant={"outline"} className="w-fit">
+            <MapPin className="mr-2 h-4 w-4" />
+            Enable Location
+          </Button>
+        </AlertDescription>
+      </Alert>
+    );
+  }
+
+  if (!coordinates) {
+    return (
+      <Alert variant="destructive" className="max-w-md">
+        <AlertTitle>Location Required</AlertTitle>
+        <AlertDescription className="flex flex-col gap-4">
+          <p>Please enable location access to see your local weather</p>
           <Button onClick={getLocation} variant={"outline"} className="w-fit">
             <MapPin className="mr-2 h-4 w-4" />
             Enable Location
