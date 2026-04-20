@@ -9,7 +9,7 @@ const Layout = ({ children }: PropsWithChildren) => {
         {children}
       </main>
       <footer className="border-t backdrop-blur py-5 supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 text-center text-blue-800">
+        <div className="container mx-auto px-4 text-center text-white-800">
           <p>Now you know when to carry an umbrella :D</p>
         </div>
       </footer>
