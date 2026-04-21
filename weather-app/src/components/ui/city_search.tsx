@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Loader2, Search } from "lucide-react";
+import { Clock, Loader2, Search, XCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useSearchHistory } from "@/hooks/use-search-history";
 import {
   Command,
   CommandDialog,
@@ -10,6 +11,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandSeparator,
 } from "@/components/ui/command";
 import { useLocationSearch } from "@/hooks/use-weather";
 
@@ -19,10 +21,22 @@ const CitySearch = () => {
   const navigate = useNavigate();
 
   const { data: locations, isLoading } = useLocationSearch(query);
+  const { history, clearHistory, addToHistory } = useSearchHistory();
 
   const handleSelect = (cityData: string) => {
     const [lat, lon, name, country] = cityData.split("|");
-    navigate(`/city/${name}??lat=${lat}&lon=${lon}`);
+
+    addToHistory.mutate({
+      query,
+      name,
+      lat: parseFloat(lat),
+      lon: parseFloat(lon),
+      country,
+    });
+
+    setOpen(false);
+
+    navigate(`/city/${name}?lat=${lat}&lon=${lon}`);
   };
 
   return (
@@ -45,6 +59,47 @@ const CitySearch = () => {
           {query.length > 2 && !!isLoading && (
             <CommandEmpty>No cities found.</CommandEmpty>
           )}
+
+          {history.length > 0 && (
+            <>
+              <CommandGroup>
+                <div>
+                  <p>Recent Searches</p>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => clearHistory.mutate()}
+                  >
+                    <XCircle className="h-4 w-4" />
+                    Clear
+                  </Button>
+                </div>
+
+                {history.map((location) => {
+                  return (
+                    <CommandItem
+                      key={`${location.lat}-${location.lon}`}
+                      value={`${location.lat}|${location.lon}|${location.name}|${location.country}`}
+                      onSelect={handleSelect}
+                    >
+                      <Clock className="mr-2 h-4 w-4 text-muted-foreground" />
+                      <span>{location.name}</span>
+                      {location.state && (
+                        <span className="text-sm text-muted-foreground">
+                          , {location.state}
+                        </span>
+                      )}
+                      <span className="text-sm text-muted-foreground">
+                        , {location.country}
+                      </span>
+                    </CommandItem>
+                  );
+                })}
+              </CommandGroup>
+            </>
+          )}
+
+          <CommandSeparator />
 
           {locations && locations.length > 0 && (
             <CommandGroup heading="Suggestions">
