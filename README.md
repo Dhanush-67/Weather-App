@@ -1,77 +1,79 @@
 # Klimate
 
-Klimate is a modern weather dashboard built with React, TypeScript, and Vite that turns live weather data into a clean, polished user experience. Instead of feeling like a simple API demo, the app is designed like a product: it detects the user's location, fetches current conditions in real time, supports city-based exploration, remembers recent searches, and keeps the interface responsive with loading states, caching, and error handling.
+Klimate is a weather dashboard built with React, TypeScript, and Vite
+that focuses on turning live weather data into a clean and responsive
+user experience. It detects the user's location, fetches current
+conditions in real time, supports city-based exploration, remembers
+recent searches, and handles loading and error states smoothly.
 
-For recruiters and hiring teams, this project demonstrates more than UI styling. It shows practical frontend engineering decisions around API integration, async state management, reusable component design, client-side persistence, routing, and user-centered UX.
+## Overview
 
-## Why This Project Stands Out
-
-- Built as a real product experience, not just a single-page tutorial app.
-- Uses browser geolocation plus reverse geocoding to personalize the default view.
-- Integrates multiple OpenWeatherMap endpoints for current weather, forecast data, and city search.
-- Applies React Query to manage caching, stale data, and refetching behavior cleanly.
-- Persists recent searches in local storage to create continuity across sessions.
-- Includes thoughtful UX states for loading, missing permissions, and failed API requests.
-- Uses a reusable component system with Tailwind CSS, Radix UI primitives, and accessible patterns.
-- Supports light/dark theme switching for a more complete, production-style interface.
+-   Uses browser geolocation to show weather for the current location\
+-   Allows searching for cities and navigating to dedicated views\
+-   Displays real-time weather data including temperature, humidity, and
+    wind\
+-   Persists recent searches locally for continuity across sessions\
+-   Handles loading, errors, and permission states in a user-friendly
+    way\
+-   Supports light and dark themes
 
 ## Core Features
 
-### 1. Location-Aware Weather Dashboard
-On first load, Klimate requests browser geolocation and uses the user's coordinates to fetch live weather conditions. If location access is denied or unavailable, the UI gracefully explains the issue and provides a recovery path.
+### Location-Based Weather
 
-### 2. City Search With Persistent History
-Users can search for cities through a command-style modal and navigate directly to a dedicated city page. Recent searches are saved locally and surfaced back in the UI, making the app feel personalized and stateful.
+On load, the app requests geolocation and fetches weather data based on
+coordinates. If permission is denied, it provides a fallback and
+explanation.
 
-### 3. Real-Time Weather Presentation
-The dashboard displays:
+### City Search
 
-- Current temperature
-- Feels-like temperature
-- Daily low and high
-- Humidity
-- Wind speed
-- Weather condition icons and descriptions
+Users can search for cities through a command-style modal and navigate
+to a city-specific page. Recent searches are saved locally.
 
-### 4. Responsive, Polished UI
-The interface uses cards, dialog-based search, skeleton loading states, gradient backgrounds, and theme switching to create a smoother product experience than a typical CRUD-style sample project.
+### Weather Data Display
 
-## Technical Highlights
+The dashboard includes:
 
-### Frontend Architecture
-- `React 19` for the UI layer
-- `TypeScript` for safer, more maintainable code
-- `Vite` for a fast local development experience and optimized builds
-- `React Router` for page-level navigation
-- `@tanstack/react-query` for async state, caching, and request lifecycle control
+-   Current temperature\
+-   Feels-like temperature\
+-   Daily high and low\
+-   Humidity\
+-   Wind speed\
+-   Weather conditions and icons
 
-### UI and Design System
-- `Tailwind CSS` for utility-first styling
-- `Radix UI` primitives for composable, accessible interactions
-- `Lucide React` for iconography
-- Reusable shared UI components for buttons, cards, dialogs, alerts, skeletons, and command menus
+### UI Experience
 
-### Data and State Strategy
-- Geolocation handled with a custom React hook
-- Weather, forecast, reverse geocoding, and location search abstracted behind an API layer
-- Search history persisted with local storage and synchronized through React Query
-- Refetch and cache timing configured deliberately to balance freshness and performance
+The interface uses cards, dialogs, skeleton loading states, and
+responsive layouts to keep the experience smooth and usable.
 
-## What This Demonstrates As A Candidate Project
+## Technical Details
 
-This project highlights the kind of skills recruiters and engineering teams often look for in frontend candidates:
+### Frontend
 
-- Building from an external API and shaping raw data into user-friendly UI
-- Managing async flows and edge cases without cluttering components
-- Designing reusable abstractions through hooks, components, and typed service layers
-- Thinking beyond "it works" toward usability, responsiveness, and product polish
-- Structuring a codebase in a scalable way that is easy to extend
+-   React 19\
+-   TypeScript\
+-   Vite\
+-   React Router\
+-   @tanstack/react-query
+
+### UI
+
+-   Tailwind CSS\
+-   Radix UI\
+-   Lucide React
+
+### Data Handling
+
+-   Geolocation handled via a custom hook\
+-   API interactions abstracted into a service layer\
+-   React Query used for caching and request lifecycle\
+-   Local storage used for persisting search history
 
 ## Project Structure
 
 The application code lives inside the `weather-app/` directory.
 
-```text
+``` text
 Weather-App/
 ├── README.md
 ├── package-lock.json
@@ -90,58 +92,42 @@ Weather-App/
 
 ## Getting Started
 
-### 1. Install dependencies
+### Install dependencies
 
-```bash
+``` bash
 cd weather-app
 npm install
 ```
 
-### 2. Configure environment variables
+### Configure environment variables
 
-Create a `.env` file inside `weather-app/` and add your OpenWeatherMap API key:
+Create a `.env` file inside `weather-app/` and add your OpenWeatherMap
+API key:
 
-```env
+``` env
 VITE_OPENWEATHER_API_KEY=your_key_here
 ```
 
-You can use `.env.example` as a reference.
+### Run locally
 
-### 3. Start the development server
-
-```bash
+``` bash
 npm run dev
 ```
 
-### 4. Build for production
+### Build
 
-```bash
+``` bash
 npm run build
 ```
 
 ## Tech Stack
 
-- React
-- TypeScript
-- Vite
-- React Router
-- TanStack React Query
-- Tailwind CSS
-- Radix UI
-- Lucide Icons
-- OpenWeatherMap API
-
-## Future Improvements
-
-The current implementation already covers the core user journey well. Strong next steps could include:
-
-- Multi-day forecast visualizations
-- Unit switching between Celsius and Fahrenheit
-- Favorite cities and saved locations
-- Better mobile-first weather detail layouts
-- Offline handling and retry strategies
-- Test coverage for hooks, API helpers, and critical UI flows
-
-## Summary
-
-Klimate is a strong frontend portfolio project because it combines API integration, state management, routing, persistence, and polished UX into one cohesive application. It reflects the ability to build software that is not only functional, but thoughtful, maintainable, and user-focused.
+-   React\
+-   TypeScript\
+-   Vite\
+-   React Router\
+-   TanStack React Query\
+-   Tailwind CSS\
+-   Radix UI\
+-   Lucide Icons\
+-   OpenWeatherMap API
