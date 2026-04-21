@@ -17,6 +17,8 @@ recent searches, and handles loading and error states smoothly.
     way
 -   Supports light and dark themes
 
+![Klimate Screenshot](Screenshot 2026-04-21 185805.png)
+
 ## Core Features
 
 ### Location-Based Weather
