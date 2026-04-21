@@ -18,6 +18,8 @@ recent searches, and handles loading and error states smoothly.
 -   Supports light and dark themes
 
 ![Klimate Screenshot](Screenshot%202026-04-21%20185805.png)
+![Screenshot 2026-04-21 185816](Screenshot%202026-04-21%20185816.png)
+![Screenshot 2026-04-21 193309](Screenshot%202026-04-21%20193309.png)
 
 ## Core Features
 
