@@ -8,13 +8,13 @@ recent searches, and handles loading and error states smoothly.
 
 ## Overview
 
--   Uses browser geolocation to show weather for the current location\
--   Allows searching for cities and navigating to dedicated views\
+-   Uses browser geolocation to show weather for the current location
+-   Allows searching for cities and navigating to dedicated views
 -   Displays real-time weather data including temperature, humidity, and
-    wind\
--   Persists recent searches locally for continuity across sessions\
+    wind
+-   Persists recent searches locally for continuity across sessions
 -   Handles loading, errors, and permission states in a user-friendly
-    way\
+    way
 -   Supports light and dark themes
 
 ## Core Features
@@ -34,11 +34,11 @@ to a city-specific page. Recent searches are saved locally.
 
 The dashboard includes:
 
--   Current temperature\
--   Feels-like temperature\
--   Daily high and low\
--   Humidity\
--   Wind speed\
+-   Current temperature
+-   Feels-like temperature
+-   Daily high and low
+-   Humidity
+-   Wind speed
 -   Weather conditions and icons
 
 ### UI Experience
@@ -50,23 +50,23 @@ responsive layouts to keep the experience smooth and usable.
 
 ### Frontend
 
--   React 19\
--   TypeScript\
--   Vite\
--   React Router\
+-   React 19
+-   TypeScript
+-   Vite
+-   React Router
 -   @tanstack/react-query
 
 ### UI
 
--   Tailwind CSS\
--   Radix UI\
+-   Tailwind CSS
+-   Radix UI
 -   Lucide React
 
 ### Data Handling
 
--   Geolocation handled via a custom hook\
--   API interactions abstracted into a service layer\
--   React Query used for caching and request lifecycle\
+-   Geolocation handled via a custom hook
+-   API interactions abstracted into a service layer
+-   React Query used for caching and request lifecycle
 -   Local storage used for persisting search history
 
 ## Project Structure
@@ -122,12 +122,12 @@ npm run build
 
 ## Tech Stack
 
--   React\
--   TypeScript\
--   Vite\
--   React Router\
--   TanStack React Query\
--   Tailwind CSS\
--   Radix UI\
--   Lucide Icons\
+-   React
+-   TypeScript
+-   Vite
+-   React Router
+-   TanStack React Query
+-   Tailwind CSS
+-   Radix UI
+-   Lucide Icons
 -   OpenWeatherMap API
